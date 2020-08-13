@@ -8,24 +8,8 @@ end
 
 def add_backer(backer)
   @backers << backer
-  project.add_backer(self) if project.backers.include?(self) == false
+  backer.back_project(self) if backer.backed_projects.include?(self) == false
   
 end
 
-end
-
-
-
-class Backer 
-  attr_accessor :name, :backed_projects
-
-  def initialize(name)
-    @name = name  
-    @backed_projects = []
-    end
-    
-    def back_project(project)
-      @backed_projects << project
-      project.add_backer(self) if project.backers.include?(self) == false
-    end
 end
